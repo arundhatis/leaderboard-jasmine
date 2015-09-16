@@ -1,10 +1,9 @@
-git config --global url."https://".insteadOf git://
-# Install node.js
-nvm install 0.10.33
-nvm use 0.10.33
-# Install Meteor
-curl -o meteor_install_script.sh https://install.meteor.com/
-chmod +x meteor_install_script.sh
-sed -i "s/type sudo >\/dev\/null 2>&1/\ false /g" meteor_install_script.sh
-./meteor_install_script.sh
-export PATH=$PATH:~/.meteor/
+language: node_js
+node_js:
+  - "0.10"
+before_install:
+  - "curl -L http://git.io/3l-rRA | /bin/sh"
+services:
+  - mongodb
+env: 
+  - LAIKA_OPTIONS="-t 5000"
